@@ -1,0 +1,23 @@
+plugins {
+  id 'java'
+  id 'application'
+}
+
+repositories {
+    maven {
+        url 'https://repo.jenkins-ci.org/public/'
+    }
+}
+
+dependencies {
+    compile 'org.jenkins-ci.main:jenkins-core:2.0'
+    compile 'javax.servlet:servlet-api:+'
+}
+
+run {
+    if (project.hasProperty('args')) {
+        args project.args.split('\\s+')
+    }
+}
+
+mainClassName = 'Repro'
